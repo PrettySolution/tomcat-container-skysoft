@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+
+  tomcat7-jre7:
+    build: ./tomcat:7-jre7-alpine
+    networks:
+      internal-mgmt:
+        ipv4_address: 192.168.15.50
+    restart: always
+
+
+networks:
+
+  internal-mgmt:
+    driver: macvlan
+    driver_opts:
+      parent: br0 # ensure this is the interface looks into the internal-mgmt network
+    ipam:
+      config:
+        - subnet: 192.168.15.0/24
