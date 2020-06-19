@@ -20,7 +20,7 @@ services:
 #      - NGINX_HOST=up-server.cf
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/tomcat.conf
-      - ./certbot/web-root:/var/www/html
+      - /var/www/html/:/var/www/html
       - ./certbot/certbot-etc:/etc/letsencrypt
       - ./certbot/certbot-var:/var/lib/letsencrypt
     depends_on:
@@ -31,7 +31,7 @@ services:
     volumes:
       - ./certbot/certbot-etc:/etc/letsencrypt
       - ./certbot/certbot-var:/var/lib/letsencrypt
-      - ./certbot/web-root:/var/www/html
+      - /var/www/html/:/var/www/html
     depends_on:
       - "nginx"
     command: certonly --webroot --webroot-path=/var/www/html --email vasil.german@gmail.com --agree-tos --no-eff-email -d events.skysoft.cloud -d photos.skysoft.cloud
