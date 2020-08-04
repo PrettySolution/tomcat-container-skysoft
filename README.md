@@ -66,7 +66,14 @@ server {
 
 
 1. [certbot ubuntu nginx](https://www.digitalocean.com/community/tutorials/nginx-let-s-encrypt-ubuntu-18-04-ru)
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt install python-certbot-nginx
+* sudo add-apt-repository ppa:certbot/certbot
+* sudo apt install python-certbot-nginx
+* sudo /usr/bin/certbot --nginx -d events.skysoft.cloud -d photos.skysoft.cloud
+* crontab -e
+```text
+30 2 * * * /usr/bin/certbot renew --post-hook "systemctl reload nginx" >> /var/log/cron.log 2>&1
+```
 
-sudo /usr/bin/certbot --nginx -d events.skysoft.cloud -d photos.skysoft.cloud
+1.[install mysql on ubuntu](https://www.digitalocean.com/community/tutorials/mysql-ubuntu-18-04-ru)
+* sudo apt install mysql-server
+* systemctl status mysql.service
