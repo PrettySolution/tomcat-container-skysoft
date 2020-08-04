@@ -10,7 +10,6 @@ services:
     volumes:
       - ./tomcat-birt/logging.properties:/usr/local/tomcat/conf/logging.properties
       - ./tomcat-birt/server.xml:/usr/local/tomcat/conf/server.xml
-      - ./birt-fpt-dir:/usr/local/tomcat/webapps/ROOT
 
   nginx:
     image: nginx:mainline-alpine
