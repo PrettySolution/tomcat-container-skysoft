@@ -77,3 +77,21 @@ server {
 1.[install mysql on ubuntu](https://www.digitalocean.com/community/tutorials/mysql-ubuntu-18-04-ru)
 * sudo apt install mysql-server
 * systemctl status mysql.service
+Letmein!@345
+
+1. [install ftp on ubuntu](https://devanswers.co/installing-ftp-server-vsftpd-ubuntu-18-04/)
+sudo apt update && sudo apt install vsftpd
+sudo adduser ftpuser
+sudo nano /etc/ssh/sshd_config
+```text
+DenyUsers ftpuser
+```
+sudo usermod -a -G tomcat ftpuser
+sudo usermod -a -G www-data ftpuser
+sudo usermod -a -G ftpuser tomcat
+usermod -d /opt/tomcat/webapps ftpuser
+nano /etc/vsftpd.conf
+```text
+write_enable=YES
+```
+systemctl restart vsftpd.service
